@@ -50,6 +50,15 @@ def extract_golden_records(df):
     return final_df
 
 def save_to_csv(df, output_path):
+    """
+    将处理后的数据保存到 CSV 文件，同时检查并创建输出目录。
+    """
+    # 检查并创建输出文件夹
+    output_dir = os.path.dirname(output_path)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    # 保存数据到 CSV 文件
     df.to_csv(output_path, index=False, date_format='%Y-%m-%d %H:%M:%S')
 
 if __name__ == "__main__":
